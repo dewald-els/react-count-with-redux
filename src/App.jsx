@@ -1,4 +1,5 @@
-import Counter from "./features/Counter/Counter";
+import './App.css';
+import Counter from './Counter/Counter';
 
 function App() {
   return (

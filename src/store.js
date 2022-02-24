@@ -1,10 +1,14 @@
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { counterReducer } from "./features/Counter/counterState";
+import { counterMiddleware, counterReducer } from "./Counter/counterState";
 
-const appReducers = combineReducers({
+const rootReducer = combineReducers({
     counter: counterReducer
 })
 
-// create redux store
-export default createStore(appReducers, composeWithDevTools())
+export default createStore(
+    rootReducer, 
+    composeWithDevTools(
+        applyMiddleware(counterMiddleware)
+    )
+);
